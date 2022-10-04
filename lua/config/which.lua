@@ -9,8 +9,10 @@ wk.register({
       ["<Tab>"] = { "<cmd>e#<cr>", "Prev buffer" },
     f = {
         name = "Files", -- optional group name
-        b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
         f = { "<cmd>Telescope find_files<cr>", "Find File" },
+        g = { "<cmd>Telescope live_grep<cr>", "Grep in files" },
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+        B = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
         e = { "<cmd>Neotree toggle<cr>", "Toggle Explorer" },
         o = { "<cmd>Neotree focus<cr>", "Focus Explorer" },
         r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
