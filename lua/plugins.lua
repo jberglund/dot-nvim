@@ -58,11 +58,6 @@ use {
   config = get_config('neotree')
 }
 
-use {
-  "glepnir/lspsaga.nvim",
-  branch = "version_2.2",
-  config = get_config("lspsaga")
-}
 
 use {"folke/which-key.nvim", config = get_config("which")}
 
@@ -101,6 +96,12 @@ use({
 use {
   'neovim/nvim-lspconfig',
   config = get_config("lspconfig"),
+}
+
+use {
+  "glepnir/lspsaga.nvim",
+  branch = "version_2.2",
+  config = get_config("lspsaga")
 }
 
 use {
