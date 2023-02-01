@@ -1,4 +1,6 @@
+if true then return {} end
 -- https://github.com/VonHeikemen/lsp-zero.nvim
+
 -- https://github.com/lukas-reineke/lsp-format.nvim
 -- https://github.com/glepnir/lspsaga.nvim
 return {
