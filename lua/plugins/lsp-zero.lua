@@ -1,5 +1,6 @@
 -- https://github.com/VonHeikemen/lsp-zero.nvim
 -- https://github.com/lukas-reineke/lsp-format.nvim
+-- https://github.com/glepnir/lspsaga.nvim
 return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -25,7 +26,6 @@ return {
 
         lsp.preset('recommended')
 
-        lsp.ensure_installed({"html", "cssls", "tsserver", "eslint"})
         lsp.set_preferences({set_lsp_keymaps = false})
 
         lsp.on_attach(function(client, bufnr)
@@ -58,7 +58,7 @@ return {
         -- maybe look at https://github.com/LazyVim/LazyVim/blob/40d363cf3f468a1cc4ea482eaabbd5c7e224f397/lua/lazyvim/plugins/lsp/format.lua
         local null_ls = require('null-ls')
         local null_opts = lsp.build_options('null-ls', {
-            on_attach = function(client, buf)
+          on_attach = function(client, buf)
                 if client.supports_method("textDocument/formatting") then
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = vim.api.nvim_create_augroup("LspFormat." .. buf,

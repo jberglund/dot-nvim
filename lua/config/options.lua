@@ -5,7 +5,6 @@ local opt = vim.opt
 
 opt.autowrite = true -- enable auto write
 opt.clipboard = "unnamedplus" -- sync with system clipboard
-opt.cmdheight = 1
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- confirm to save changes before exiting modified buffer
@@ -25,7 +24,7 @@ opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 8 -- Lines of context
 opt.sessionoptions = {"buffers", "curdir", "tabpages", "winsize"}
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
