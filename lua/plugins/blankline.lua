@@ -3,7 +3,7 @@ return {
     event = "BufReadPre",
     opts = {
         -- char = "▏",
-        char = "│",
+        -- char = "│",
         filetype_exclude = {
             "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy"
         },
@@ -12,7 +12,6 @@ return {
     },
     config = function()
         vim.opt.list = true
-
         require("indent_blankline").setup {
             space_char_blankline = " ",
             show_current_context = true,

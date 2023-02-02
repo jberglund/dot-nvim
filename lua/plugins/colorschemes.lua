@@ -1,5 +1,25 @@
 return {
     {'nyoom-engineering/oxocarbon.nvim', lazy = false}, -- tokyonight
+    { "catppuccin/nvim", name = "catppuccin",
+      lazy = false,
+      priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme catppuccin]])
+      require('catppuccin').setup({
+          flavour = "mocha"
+        })
+      end
+    },
+    { 'marko-cerovac/material.nvim', lazy = false, 
+    config = function()
+    --  vim.cmd([[colorscheme material]])
+    -- vim.g.material_style = "deep ocean"
+    --  require('material').setup({
+    --      lualine_style = "default"
+    -- })
+
+    end
+  },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -19,12 +39,7 @@ return {
         },
         config = function()
             -- load the colorscheme here
-            vim.cmd([[colorscheme tokyonight]])
+            -- vim.cmd([[colorscheme tokyonight]])
         end
-    }, {
-        'AlexvZyl/nordic.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function() require'nordic'.load() end
-    }
+    },
 }
