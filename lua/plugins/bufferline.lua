@@ -1,5 +1,6 @@
 return {
     "akinsho/bufferline.nvim",
+    dependencies = 'catppuccin',
     event = "VeryLazy",
     opts = {
         options = {
@@ -20,5 +21,10 @@ return {
                 }
             }
         }
-    }
+    },
+    config = function()
+        require("bufferline").setup {
+            highlights = require("catppuccin.groups.integrations.bufferline").get()
+        }
+    end
 }
