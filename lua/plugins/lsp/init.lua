@@ -21,7 +21,7 @@ return {
 			diagnostics = {
 				underline = true,
 				update_in_insert = false,
-				virtual_text = { spacing = 3, prefix = "● " },
+				virtual_text = { spacing = 3, prefix = " " },
 				severity_sort = true,
 			},
 			-- Automatically format on save
