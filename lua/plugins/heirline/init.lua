@@ -19,12 +19,29 @@ return {
 		-- local ViMode = require("plugins.heirline.mode")
 		local Git = require("plugins.heirline.git")
 		local Diagnostics = require("plugins.heirline.diagnostics")
+		local Lsp = require("plugins.heirline.lsp")
+
+		local WorkDir = {
+			provider = function()
+				local icon = " "
+				local cwd = vim.fn.getcwd(0)
+				cwd = vim.fn.fnamemodify(cwd, ":~")
+				if not conditions.width_percent_below(#cwd, 0.25) then
+					cwd = vim.fn.pathshorten(cwd)
+				end
+				local trail = cwd:sub(-1) == "/" and "" or "/"
+				return icon .. cwd .. trail
+			end,
+			hl = { fg = "blue" },
+		}
 
 		local Align = { provider = "%=" }
-		local Space = { provider = " " }
+		local Space = { provider = "  " }
 
 		local StatusLine = {
 			-- ViMode,
+			Space,
+			WorkDir,
 			Space,
 			Git,
 			Space,
@@ -32,6 +49,7 @@ return {
 			Space,
 			-- FileNameBlock,
 			Align,
+			Lsp,
 		}
 
 		-- require("heirline").load_colors(colors)

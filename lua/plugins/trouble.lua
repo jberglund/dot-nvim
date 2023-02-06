@@ -8,6 +8,11 @@ return {
 			"<cmd>TroubleToggle<cr>",
 			desc = "Trouble Toggle",
 		},
+		{
+			"<leader>ct",
+			"<cmd>Trouble<cr>",
+			desc = "Trouble",
+		},
 	},
 	opts = {
 		position = "right",

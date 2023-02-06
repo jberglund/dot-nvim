@@ -21,7 +21,7 @@ map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 
-map("n", "<leader>w", ":silent write<cr>", { desc = "Save, silently!", silent = true })
+map("n", "<leader>w", ":w!<cr>", { desc = "Save, silently!", silent = true })
 
 -- better indenting
 map("v", "<", "<gv")

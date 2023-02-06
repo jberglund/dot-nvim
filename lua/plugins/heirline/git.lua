@@ -18,7 +18,7 @@ local Git = {
 		provider = function(self)
 			return self.status_dict.head
 		end,
-		hl = { fg = "overlay2" },
+		hl = { fg = "overlay2", bold = true },
 	},
 }
 
