@@ -38,23 +38,8 @@ map("i", "<A-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
 
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
--- git-- lazygit
---[[ map("n", "<leader>gg",
-    function() Util.float_term({"lazygit"}, {cwd = Util.get_root()}) end,
-    {desc = "Lazygit (root dir)"})
-map("n", "<leader>gG", function() Util.float_term({"lazygit"}) end,
-    {desc = "Lazygit (cwd)"}) ]]
-
 -- windows
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
-
-map("n", "<leader>ev", ":source ~/.config/nvim/init.lua", options)
-map("n", "<leader>el", ":luafile %<cr>", options)
-
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })

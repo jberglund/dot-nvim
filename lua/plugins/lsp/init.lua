@@ -1,5 +1,4 @@
 return {
-	-- lspconfig
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
@@ -15,7 +14,6 @@ return {
 				end,
 			},
 		},
-		---@class PluginLspOpts
 		opts = {
 			-- options for vim.diagnostic.config()
 			diagnostics = {
@@ -24,17 +22,13 @@ return {
 				virtual_text = { spacing = 3, prefix = " " },
 				severity_sort = true,
 			},
-			-- Automatically format on save
 			autoformat = true,
-			-- options for vim.lsp.buf.format
-			-- `bufnr` and `filter` is handled by the LazyVim formatter,
-			-- but can be also overriden when specified
 			format = {
 				formatting_options = nil,
 				timeout_ms = nil,
 			},
+
 			-- LSP Server Settings
-			---@type lspconfig.options
 			servers = {
 				jsonls = {},
 				tsserver = {},
@@ -57,21 +51,12 @@ return {
 					},
 				},
 			},
-			-- you can do any additional lsp server setup here
-			-- return true if you don't want this server to be setup with lspconfig
-			---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
 			setup = {
-				-- example to setup with typescript.nvim
-				-- tsserver = function(_, opts)
-				-- 	require("typescript").setup({ server = opts })
-				-- 	return true
-				-- end,
-				-- Specify * to use this function as a fallback for any server
-				-- ["*"] = function(server, opts) end,
+				-- you can do any additional lsp server setup here
+				-- return true if you don't want this server to be setup with lspconfig
 			},
 		},
-		---@param opts PluginLspOpts
-		config = function(plugin, opts)
+		config = function(_, opts)
 			-- setup autoformat
 			require("plugins.lsp.format").autoformat = opts.autoformat
 			-- setup formatting and keymaps
@@ -80,8 +65,8 @@ return {
 				require("plugins.lsp.keymaps").on_attach(client, buffer)
 			end)
 
-			-- diagnostics
-			for name, icon in pairs(require("config.icons").icons.diagnostics) do
+			-- set icons for diagnostics
+			for name, icon in pairs(require("config.icons").diagnostics) do
 				name = "DiagnosticSign" .. name
 				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 			end
@@ -136,17 +121,17 @@ return {
 			local nls = require("null-ls")
 			return {
 				sources = {
-					-- nls.builtins.formatting.prettierd,
+					nls.builtins.formatting.prettierd,
+					nls.builtins.formatting.eslint_d,
 					nls.builtins.formatting.stylua,
-					nls.builtins.diagnostics.flake8,
 				},
 			}
 		end,
+		config = true,
 	},
 
 	-- cmdline tools and lsp servers
 	{
-
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -154,12 +139,11 @@ return {
 			ensure_installed = {
 				"stylua",
 				"shellcheck",
+				"prettierd",
 				"shfmt",
-				"flake8",
 			},
 		},
-		---@param opts MasonSettings | {ensure_installed: string[]}
-		config = function(plugin, opts)
+		config = function(_, opts)
 			require("mason").setup(opts)
 			local mr = require("mason-registry")
 			for _, tool in ipairs(opts.ensure_installed) do

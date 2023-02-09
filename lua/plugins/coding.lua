@@ -12,33 +12,44 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-    -- stylua: ignore
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true, silent = true, mode = "i",
-      },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    },
+		keys = {
+			{
+				"<tab>",
+				function()
+					return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+				end,
+				expr = true,
+				silent = true,
+				mode = "i",
+			},
+			{
+				"<tab>",
+				function()
+					require("luasnip").jump(1)
+				end,
+				mode = "s",
+			},
+			{
+				"<s-tab>",
+				function()
+					require("luasnip").jump(-1)
+				end,
+				mode = { "i", "s" },
+			},
+		},
 	},
-	-- lspsaga
-	-- {
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("lspsaga").setup({})
-	-- 	end,
-	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	-- },
+
+	-- https://github.com/weilbith/nvim-code-action-menu
+	{
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+		keys = { { "<leader>ca", "<cmd>CodeActionMenu<cr>", desc = "Code Action" } },
+	},
 
 	-- auto completion
 	{
 		"hrsh7th/nvim-cmp",
-		version = false, -- last release is way too old
+		version = false,
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -72,7 +83,7 @@ return {
 				}),
 				formatting = {
 					format = function(_, item)
-						local icons = require("config.icons").icons
+						local icons = require("config.icons")
 						if icons[item.kind] then
 							item.kind = icons[item.kind] .. item.kind
 						end

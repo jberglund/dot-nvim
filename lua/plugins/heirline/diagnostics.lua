@@ -1,5 +1,4 @@
 local conditions = require("heirline.conditions")
-local icons = require("config.icons").icons
 
 local Diagnostics = {
 	condition = conditions.has_diagnostics,

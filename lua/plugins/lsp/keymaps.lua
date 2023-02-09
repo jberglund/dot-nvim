@@ -1,19 +1,16 @@
 local M = {}
 
----@type PluginLspKeys
 M._keys = nil
 
----@return (LazyKeys|{has?:string})[]
 function M.get()
 	local format = require("plugins.lsp.format").format
-  ---@class PluginLspKeys
   -- stylua: ignore
   M._keys = M._keys or {
     { "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
     { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
     { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition" },
-    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
     { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
     { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
     { "gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
     { "K", vim.lsp.buf.hover, desc = "Hover" },
@@ -35,7 +32,7 @@ end
 
 function M.on_attach(client, buffer)
 	local Keys = require("lazy.core.handler.keys")
-	local keymaps = {} ---@type table<string,LazyKeys|{has?:string}>
+	local keymaps = {}
 
 	for _, value in ipairs(M.get()) do
 		local keys = Keys.parse(value)
@@ -49,7 +46,6 @@ function M.on_attach(client, buffer)
 	for _, keys in pairs(keymaps) do
 		if not keys.has or client.server_capabilities[keys.has .. "Provider"] then
 			local opts = Keys.opts(keys)
-			---@diagnostic disable-next-line: no-unknown
 			opts.has = nil
 			opts.silent = true
 			opts.buffer = buffer

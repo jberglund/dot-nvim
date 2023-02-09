@@ -1,5 +1,5 @@
 local utils = require("heirline.utils")
-local icons = require("config.icons").icons
+local icons = require("config.icons")
 
 local Mode = {
 	init = function(self)
