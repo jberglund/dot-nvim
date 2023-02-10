@@ -16,7 +16,7 @@ return {
 		},
 		{
 			"<leader>fT",
-			"<cmd>Neotree focus toggle reveal<cr>",
+			"<cmd>NeoTree focus toggle reveal<cr>",
 			desc = "Explorer - Toggle",
 		},
 		{

@@ -1,3 +1,4 @@
+local icon = require("config.icons").diagnostics
 return {
 	"folke/trouble.nvim",
 	requires = "nvim-tree/nvim-web-devicons",
@@ -16,5 +17,13 @@ return {
 	},
 	opts = {
 		position = "right",
+		padding = false,
+		signs = {
+			error = icon.Error,
+			warning = icon.Warn,
+			hint = icon.Hint,
+			information = icon.Info,
+			other = "﫠",
+		},
 	},
 }

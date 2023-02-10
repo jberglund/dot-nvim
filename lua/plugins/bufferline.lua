@@ -47,7 +47,13 @@ return {
 			offsets = {
 				{
 					filetype = "neo-tree",
-					text = "Neo-tree",
+					text = "Explorer",
+					highlight = "Directory",
+					text_align = "left",
+				},
+				{
+					filetype = "Trouble",
+					text = "Diagnostics",
 					highlight = "Directory",
 					text_align = "left",
 				},
