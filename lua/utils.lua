@@ -19,8 +19,6 @@ function M.read_package_json()
 end
 
 ---Check if the given NPM package is installed in the current project.
----@param package string
----@return boolean
 function M.is_npm_package_installed(package)
 	local package_json = M.read_package_json()
 	if not package_json then
