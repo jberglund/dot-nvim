@@ -1,15 +1,26 @@
 return {
 	"akinsho/bufferline.nvim",
+	version = "v3.*",
 	dependencies = "catppuccin/nvim",
 	event = "VeryLazy",
 	opts = {
+		-- highlights = require("catppuccin.groups.integrations.bufferline").get(),
+		-- highlights = {
+		-- 	-- fill = {
+		-- 	-- 	bg = "red",
+		-- 	-- 	fg = "red",
+		-- 	-- },
+		-- 	-- background = {
+		-- 	-- 	bg = "green",
+		-- 	-- 	fg = "green",
+		-- 	-- },
+		-- },
 		options = {
 			diagnostics = "nvim_lsp",
 			diagnostics_indicator = function(count, level, _, context)
-				if context.buffer:current() then
-					return ""
-				end
-
+				-- if context.buffer:current() then
+				-- 	return ""
+				-- end
 				local icons = require("config.icons").diagnostics
 
 				local icon = level:match("error") and icons.Error or icons.Warn
@@ -47,20 +58,31 @@ return {
 			offsets = {
 				{
 					filetype = "neo-tree",
-					text = "Explorer",
+					text = "~ explorer",
 					highlight = "Directory",
 					text_align = "left",
 				},
 				{
 					filetype = "Trouble",
-					text = "Diagnostics",
+					text = "~ diagnostics",
 					highlight = "Directory",
 					text_align = "left",
 				},
 			},
+			indicator = {
+				style = "icon",
+			},
+			show_buffer_close_icons = false,
+			show_close_icon = false,
+			always_show_bufferline = false,
+			separator_style = "thin",
+			-- separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
 		},
 	},
-	-- config = function(plugin, opts)
-	-- 	require("bufferline").setup({})
-	-- end,
+	config = function(_, opts)
+		require("bufferline").setup({
+			highlights = require("catppuccin.groups.integrations.bufferline").get(),
+			options = opts.options,
+		})
+	end,
 }

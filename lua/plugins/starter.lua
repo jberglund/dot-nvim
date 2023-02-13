@@ -10,13 +10,23 @@ return {
 		opts = function()
 			local logo = table.concat({
 				" ",
-				"    ███    ██ ██    ██ ██ ███    ███",
-				"    ████   ██ ██    ██ ██ ████  ████",
-				"    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-				"    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-				"    ██   ████   ████   ██ ██      ██",
+				"ooooo      ooo              o8o                    ",
+				"`888b.     `8'              `i'                    ",
+				" 8 `88b.    8  oooo    ooo oooo  ooo. .oo.  .oo.   ",
+				" 8   `88b.  8   `88.  .8'  `888  `888P'Y88bP'Y88b  ",
+				" 8     `88b.8    `88..8'    888   888   888   888  ",
+				" 8       `888     `888'     888   888   888   888  ",
+				"o8o        `8      `8'     o888o o888o o888o o888o ",
 			}, "\n")
-			local pad = string.rep(" ", 22)
+			-- local logo = table.concat({
+			-- 	" ",
+			-- 	" ███    ██ ██    ██ ██ ███    ███ ",
+			-- 	" ████   ██ ██    ██ ██ ████  ████ ",
+			-- 	" ██ ██  ██ ██    ██ ██ ██ ████ ██ ",
+			-- 	" ██  ██ ██  ██  ██  ██ ██  ██  ██ ",
+			-- 	" ██   ████   ████   ██ ██      ██ ",
+			-- }, "\n")
+			local pad = string.rep(" ", 0)
 			local new_section = function(name, action, section)
 				return { name = name, action = action, section = pad .. section }
 			end
@@ -31,7 +41,7 @@ return {
           new_section("Recent files", "Telescope oldfiles",   "Telescope"),
           new_section("Grep text",    "Telescope live_grep",  "Telescope"),
           new_section("init.lua",     "e $MYVIMRC",           "Config"),
-          new_section("Update plugins",         "Lazy",                 "Config"),
+          new_section("Update",         "Lazy",                 "Config"),
           new_section("New file",     "ene | startinsert",    "Built-in"),
           new_section("Quit",         "qa",                   "Built-in"),
         },
@@ -62,7 +72,7 @@ return {
 				callback = function()
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					local pad_footer = string.rep(" ", 8)
+					local pad_footer = string.rep(" ", 0)
 					starter.config.footer = pad_footer
 						.. "⚡ Neovim loaded "
 						.. stats.count

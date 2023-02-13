@@ -7,7 +7,14 @@ return {
 		config = function()
 			vim.g.startuptime_tries = 10
 		end,
-	}, -- session management
+	},
+	{
+		"echasnovski/mini.cursorword",
+		version = false,
+		config = function(_, opts)
+			require("mini.cursorword").setup(opts)
+		end,
+	},
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
