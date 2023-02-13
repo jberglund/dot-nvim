@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local default_options = { noremap = true }
+-- local default_options = { noremap = true }
 
 -- map the leader key
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
@@ -24,10 +24,11 @@ map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader>w", ":silent write<cr>", { desc = "Save, silently!", silent = true })
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-map("n", ">", ">>")
-map("n", "<", "<<")
+map("v", "<", "<gv", { desc = "Indent line left" })
+map("v", ">", ">gv", { desc = "Indent line right" })
+
+map("n", "<", "<<", { desc = "Indent line left" })
+map("n", ">", ">>", { desc = "Indent line right" })
 
 map("n", "<A-j>", ":m .+1<cr>==", { desc = "Move down" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })

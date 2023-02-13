@@ -79,10 +79,11 @@ return {
 			-- separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
 		},
 	},
-	config = function(_, opts)
-		require("bufferline").setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get(),
-			options = opts.options,
-		})
-	end,
+	config = true,
+	-- config = function(_, opts)
+	-- 	require("bufferline").setup({
+	-- 		highlights = require("catppuccin.groups.integrations.bufferline").get(),
+	-- 		options = opts.options,
+	-- 	})
+	-- end,
 }

@@ -22,6 +22,7 @@ require("lazy").setup({
 	change_detection = {
 		notify = false, -- no need to get notified when a save occurs
 	},
+	install = { colorscheme = { "tokyonight" } },
 	checker = { enabled = true }, -- automatically check for plugin updates
 	performance = {
 		rtp = {

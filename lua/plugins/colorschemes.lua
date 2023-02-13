@@ -4,10 +4,18 @@ return {
 	-- 	"rktjmp/lush.nvim",
 	-- 	cmd = "LushRunQuickstart",
 	-- },
+	-- {
+	-- 	"arturgoms/moonbow.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme moonbow]])
+	-- 	end,
+	-- },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		-- enabled = false,
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -35,8 +43,7 @@ return {
 			},
 		},
 		config = function()
-			-- load the colorscheme here
-			-- vim.cmd([[colorscheme tokyonight]])
+			vim.cmd([[colorscheme tokyonight-night]])
 		end,
 	},
 }

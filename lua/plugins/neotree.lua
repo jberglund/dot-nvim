@@ -32,6 +32,23 @@ return {
 			enable_git_status = true,
 			enable_diagnostics = true,
 			window = { position = "left" },
+			default_component_configs = {
+				git_status = {
+					symbols = {
+						-- Change type
+						added = "",
+						modified = "",
+						deleted = "✖",
+						renamed = "",
+						-- Status type
+						untracked = "?",
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
+				},
+			},
 		})
 	end,
 }
