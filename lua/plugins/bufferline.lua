@@ -5,16 +5,22 @@ return {
 	event = "VeryLazy",
 	opts = {
 		-- highlights = require("catppuccin.groups.integrations.bufferline").get(),
-		-- highlights = {
-		-- 	-- fill = {
-		-- 	-- 	bg = "red",
-		-- 	-- 	fg = "red",
-		-- 	-- },
-		-- 	-- background = {
-		-- 	-- 	bg = "green",
-		-- 	-- 	fg = "green",
-		-- 	-- },
-		-- },
+		highlights = {
+			buffer_selected = {
+				-- fg = normal_fg,
+				-- bg = '<colour-value-here>',
+				bold = true,
+				italic = false,
+			},
+			-- fill = {
+			-- 	bg = "red",
+			-- 	fg = "red",
+			-- },
+			-- background = {
+			-- 	bg = "green",
+			-- 	fg = "green",
+			-- },
+		},
 		options = {
 			diagnostics = "nvim_lsp",
 			diagnostics_indicator = function(count, level, _, context)
@@ -58,13 +64,13 @@ return {
 			offsets = {
 				{
 					filetype = "neo-tree",
-					text = "~ explorer",
-					highlight = "Directory",
+					text = "neo ",
+					higGlight = "Directory",
 					text_align = "left",
 				},
 				{
 					filetype = "Trouble",
-					text = "~ diagnostics",
+					text = " ",
 					highlight = "Directory",
 					text_align = "left",
 				},
