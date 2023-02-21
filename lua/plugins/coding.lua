@@ -39,11 +39,12 @@ return {
 	},
 
 	-- https://github.com/weilbith/nvim-code-action-menu
-	{
-		"weilbith/nvim-code-action-menu",
-		cmd = "CodeActionMenu",
-		keys = { { "<leader>ca", "<cmd>CodeActionMenu<cr>", desc = "Code Action" } },
-	},
+	-- LSPSaga does this now
+	-- {
+	-- 	"weilbith/nvim-code-action-menu",
+	-- 	cmd = "CodeActionMenu",
+	-- 	keys = { { "<leader>ca", "<cmd>CodeActionMenu<cr>", desc = "Code Action" } },
+	-- },
 
 	-- auto completion
 	{
@@ -82,7 +83,7 @@ return {
 				}),
 				formatting = {
 					format = function(_, item)
-						local icons = require("config.icons")
+						local icons = require("config.icons").kinds
 						if icons[item.kind] then
 							item.kind = icons[item.kind] .. item.kind
 						end
@@ -100,6 +101,29 @@ return {
 
 	-- comments
 	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	{
+		"windwp/nvim-ts-autotag",
+		ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte", "vue", "tsx", "jsx" },
+		opts = {
+			autotag = {
+				enable = true,
+				filetypes = {
+					"html",
+					"javascript",
+					"typescript",
+					"javascriptreact",
+					"typescriptreact",
+					"svelte",
+					"vue",
+					"tsx",
+					"jsx",
+				},
+			},
+			config = function(_, opts)
+				require("nvim-ts-autotag").setup(opts)
+			end,
+		},
+	},
 	{
 		"echasnovski/mini.comment",
 		event = "VeryLazy",
