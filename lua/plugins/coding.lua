@@ -59,6 +59,11 @@ return {
 		},
 		opts = function()
 			local cmp = require("cmp")
+
+			local MAX_LABEL_WIDTH = 20
+			local MIN_LABEL_WIDTH = 20
+			local ELLIPSIS_CHAR = "…"
+
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -81,9 +86,25 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
+				-- window = {
+				-- 	completion = {
+				-- 		winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				-- 		side_padding = 0,
+				-- 	},
+				-- },
 				formatting = {
 					format = function(_, item)
 						local icons = require("config.icons").kinds
+						local label = item.abbr
+						local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+
+						if truncated_label ~= label then
+							item.abbr = truncated_label .. ELLIPSIS_CHAR
+						elseif string.len(label) < MIN_LABEL_WIDTH then
+							local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+							item.abbr = label .. padding
+						end
+
 						if icons[item.kind] then
 							item.kind = icons[item.kind] .. item.kind
 						end
@@ -174,6 +195,7 @@ return {
 	},
 
 	-- autopairs
+	-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#nvim-autopairs
 	{
 		"echasnovski/mini.pairs",
 		event = "VeryLazy",

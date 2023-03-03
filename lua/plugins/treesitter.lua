@@ -1,6 +1,7 @@
 return {
 
 	"nvim-treesitter/nvim-treesitter",
+	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	version = false, -- last release is way too old and doesn't work on Windows
 	build = ":TSUpdate",
 	event = { "BufReadPost", "BufNewFile" },
@@ -10,6 +11,20 @@ return {
 	},
 	---@type TSConfig
 	opts = {
+		textobjects = {
+			select = {
+				enable = true,
+				-- Automatically jump forward to textobj, similar to targets.vim
+				lookahead = true,
+				keymaps = {
+					-- You can use the capture groups defined in textobjects.scm
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@class.outer",
+					["ic"] = "@class.inner",
+				},
+			},
+		},
 		highlight = { enable = true },
 		indent = { enable = true },
 		context_commentstring = { enable = true, enable_autocmd = false },

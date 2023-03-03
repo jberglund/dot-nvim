@@ -12,19 +12,35 @@ return {
 	-- 		vim.cmd([[colorscheme moonbow]])
 	-- 	end,
 	-- },
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd([[colorscheme catppuccin]])
-			require("catppuccin").setup({
-				flavour = "mocha",
-			})
-		end,
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	enabled = false,
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme catppuccin]])
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "mocha",
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme kanagawa]])
+	-- 	end,
+	-- },
+	-- {
+	-- 	"tiagovla/tokyodark.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme tokyodark]])
+	-- 	end,
+	-- },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,

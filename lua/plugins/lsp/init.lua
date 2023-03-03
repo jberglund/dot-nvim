@@ -114,16 +114,26 @@ return {
 
 	{
 		"glepnir/lspsaga.nvim",
-		event = "BufRead",
-		config = function()
-			require("lspsaga").setup({})
-		end,
 		cmd = "Lspsaga",
+		event = "BufRead",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
+		config = function()
+			require("lspsaga").setup({
+				code_action = {
+					keys = {
+						-- string | table type
+						quit = { "q", "<esc>" },
+					},
+				},
+				lightbulb = {
+					enable = false,
+				},
+			})
+		end,
 	},
 
 	-- formatters
